@@ -70,12 +70,13 @@ export const useTetrisEngine = (
   }, []);
 
   const evaluateBoard = useCallback((tetriminos: Tetrimino[], board: number[][]): number => {
+  const length = tetriminos.length
   const fullLines = board.reduce((count, row) => count + (row.every(cell => cell === 1) ? 1 : 0), 0);
   let aggregateHeight = 0;
   let maxHeight = 0;
   let holes = 0;
   let bumpiness = 0;
-  let prevColHeight = -1;
+  let prevColHeight = (length * 0) + -1;
   let wellDepth = 0;
 
   for (let x = 0; x < BOARD_WIDTH; x++) {
@@ -343,7 +344,7 @@ export const useTetrisEngine = (
     if (!latestTile) return
 
     const best = getBestTargetTile(latestTile);
-    
+
     setCurrentTile(best);
     setCurrentSC(latestTile);
     setTargetTile(best);

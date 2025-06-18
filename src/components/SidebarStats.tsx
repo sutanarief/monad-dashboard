@@ -6,7 +6,6 @@ interface Props {
   currentTile: Tetrimino | null;
   tps: number;
   gas: number;
-  rawTiles: Tetrimino[];
   latestBlock: any
 }
 
@@ -28,7 +27,7 @@ interface Block {
   totalValue: number;
 }
 
-export const SidebarStats: React.FC<Props> = ({ currentTile, tps, rawTiles, gas, latestBlock }) => {
+export const SidebarStats: React.FC<Props> = ({ currentTile, tps, gas, latestBlock }) => {
   const [lastTile, setLastTile] = useState<Tetrimino | null>(null);
   const [copied, setCopied] = useState(false);
     const [blocks, setBlocks] = useState<Block[]>([]);
@@ -54,8 +53,6 @@ export const SidebarStats: React.FC<Props> = ({ currentTile, tps, rawTiles, gas,
       return "Unknown";
     }
   };
-
-  const TILE_SIZE = 12;
 
   const renderMiniShape = (
     shape: number[][],

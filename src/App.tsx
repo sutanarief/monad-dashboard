@@ -17,7 +17,7 @@ const App = () => {
   rpcUrl: "https://testnet-rpc.monad.xyz",
 })
 const {tps, gas } = useTPS()
-  const { boardWidth, boardHeight, tiles, currentTile, rawTiles } = useTetrisEngine(tps, latestBlock, latestTile);
+  const { boardWidth, boardHeight, tiles, currentTile } = useTetrisEngine(tps, latestBlock, latestTile);
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
@@ -46,7 +46,7 @@ const {tps, gas } = useTPS()
             />
           </div>
           <div className="w-full flex justify-end">
-            <SidebarStats currentTile={currentTile} tps={tps} gas={gas} rawTiles={rawTiles} latestBlock={latestBlock} />
+            <SidebarStats currentTile={currentTile} tps={tps} gas={gas} latestBlock={latestBlock} />
           </div>
         </div>
       </main>
